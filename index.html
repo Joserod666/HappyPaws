@@ -4,19 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Paws - Tu tienda de confianza para mascotas</title>
+    
+    <!-- Estilos CSS -->
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Fuentes de Google Fonts - Poppins para mejor legibilidad -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome para iconografía -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header y Navegación -->
+    <!-- ========================================
+         HEADER Y NAVEGACIÓN PRINCIPAL
+         ======================================== -->
     <header class="header">
         <nav class="navbar">
             <div class="nav-container">
+                <!-- Logo de la tienda -->
                 <div class="nav-logo">
                     <i class="fas fa-paw"></i>
                     <span>Happy Paws</span>
                 </div>
+                
+                <!-- Menú de navegación principal -->
                 <ul class="nav-menu">
                     <li class="nav-item">
                         <a href="#inicio" class="nav-link">Inicio</a>
@@ -27,12 +38,14 @@
                     <li class="nav-item">
                         <a href="#contacto" class="nav-link">Contacto</a>
                     </li>
+                    <!-- Botón de inicio de sesión/registro -->
                     <li class="nav-item">
                         <a href="#" class="nav-link" id="login-btn">
                             <i class="fas fa-user"></i>
                             <span id="user-name">Iniciar Sesión</span>
                         </a>
                     </li>
+                    <!-- Icono del carrito con contador -->
                     <li class="nav-item">
                         <a href="#carrito" class="nav-link cart-icon" id="cart-icon">
                             <i class="fas fa-shopping-cart"></i>
@@ -40,6 +53,8 @@
                         </a>
                     </li>
                 </ul>
+                
+                <!-- Menú hamburguesa para dispositivos móviles -->
                 <div class="hamburger">
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -49,7 +64,9 @@
         </nav>
     </header>
 
-    <!-- Banner Principal -->
+    <!-- ========================================
+         SECCIÓN HERO - BANNER PRINCIPAL
+         ======================================== -->
     <section class="hero" id="inicio">
         <div class="hero-content">
             <h1 class="hero-title">Todo para tu mascota</h1>
@@ -59,6 +76,7 @@
                 <a href="#ofertas" class="btn btn-secondary">Ofertas Especiales</a>
             </div>
         </div>
+        <!-- Animación de mascotas en el hero -->
         <div class="hero-image">
             <div class="hero-pets">
                 <div class="pet pet-1">🐕</div>
@@ -68,11 +86,13 @@
         </div>
     </section>
 
-    <!-- Búsqueda -->
+    <!-- ========================================
+         SECCIÓN DE BÚSQUEDA
+         ======================================== -->
     <section class="search-section">
         <div class="container">
             <div class="search-container">
-                <!-- Búsqueda Básica -->
+                <!-- Búsqueda Básica por nombre -->
                 <div class="search-basic">
                     <h3>Buscar Productos</h3>
                     <div class="search-input-group">
@@ -83,10 +103,11 @@
                     </div>
                 </div>
                 
-                <!-- Búsqueda Avanzada -->
+                <!-- Búsqueda Avanzada con filtros -->
                 <div class="search-advanced">
                     <h3>Búsqueda Avanzada</h3>
                     <div class="advanced-filters">
+                        <!-- Filtro por categoría -->
                         <div class="filter-group">
                             <label for="category-filter">Categoría:</label>
                             <select id="category-filter">
@@ -98,14 +119,17 @@
                                 <option value="Higiene">Higiene</option>
                             </select>
                         </div>
+                        <!-- Filtro por precio mínimo -->
                         <div class="filter-group">
                             <label for="price-min">Precio mínimo:</label>
                             <input type="number" id="price-min" placeholder="0">
                         </div>
+                        <!-- Filtro por precio máximo -->
                         <div class="filter-group">
                             <label for="price-max">Precio máximo:</label>
                             <input type="number" id="price-max" placeholder="500000">
                         </div>
+                        <!-- Filtro por estado de stock -->
                         <div class="filter-group">
                             <label for="stock-filter">Stock:</label>
                             <select id="stock-filter">
@@ -114,6 +138,7 @@
                                 <option value="low">Stock bajo</option>
                             </select>
                         </div>
+                        <!-- Botones de acción para filtros -->
                         <button id="advanced-search-btn" class="btn btn-secondary">
                             <i class="fas fa-filter"></i> Filtrar
                         </button>
@@ -126,36 +151,44 @@
         </div>
     </section>
 
-    <!-- Categorías -->
+    <!-- ========================================
+         SECCIÓN DE CATEGORÍAS
+         ======================================== -->
     <section class="categories">
         <div class="container">
             <h2 class="section-title">Nuestras Categorías</h2>
             <div class="categories-grid">
+                <!-- Categoría: Todos los productos -->
                 <div class="category-card" data-category="all">
                     <i class="fas fa-th-large"></i>
                     <h3>Todos</h3>
                     <p>Ver todos los productos</p>
                 </div>
+                <!-- Categoría: Alimentación -->
                 <div class="category-card" data-category="Alimentación">
                     <i class="fas fa-bone"></i>
                     <h3>Alimentación</h3>
                     <p>Comida premium para todas las edades</p>
                 </div>
+                <!-- Categoría: Juguetes -->
                 <div class="category-card" data-category="Juguetes">
                     <i class="fas fa-toy"></i>
                     <h3>Juguetes</h3>
                     <p>Entretenimiento y diversión</p>
                 </div>
+                <!-- Categoría: Ropa -->
                 <div class="category-card" data-category="Ropa">
                     <i class="fas fa-tshirt"></i>
                     <h3>Ropa</h3>
                     <p>Estilo y comodidad</p>
                 </div>
+                <!-- Categoría: Accesorios -->
                 <div class="category-card" data-category="Accesorios">
                     <i class="fas fa-shield-alt"></i>
                     <h3>Accesorios</h3>
                     <p>Todo lo que necesitas</p>
                 </div>
+                <!-- Categoría: Higiene -->
                 <div class="category-card" data-category="Higiene">
                     <i class="fas fa-soap"></i>
                     <h3>Higiene</h3>
@@ -165,28 +198,36 @@
         </div>
     </section>
 
-    <!-- Productos Destacados -->
+    <!-- ========================================
+         SECCIÓN DE PRODUCTOS
+         ======================================== -->
     <section class="products" id="productos">
         <div class="container">
             <h2 class="section-title">Productos Destacados</h2>
+            <!-- Grid de productos - se llena dinámicamente con JavaScript -->
             <div class="products-grid" id="products-grid">
                 <!-- Los productos se cargarán dinámicamente con JavaScript -->
             </div>
         </div>
     </section>
 
-    <!-- Carrito Modal -->
+    <!-- ========================================
+         MODAL DEL CARRITO DE COMPRAS
+         ======================================== -->
     <div class="cart-modal" id="cart-modal">
         <div class="cart-content">
+            <!-- Header del carrito -->
             <div class="cart-header">
                 <h3>Tu Carrito</h3>
                 <button class="close-cart" id="close-cart">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
+            <!-- Lista de productos en el carrito -->
             <div class="cart-items" id="cart-items">
                 <!-- Los items del carrito se cargarán dinámicamente -->
             </div>
+            <!-- Footer del carrito con total y botón de compra -->
             <div class="cart-footer">
                 <div class="cart-total">
                     <span>Total:</span>
@@ -197,15 +238,19 @@
         </div>
     </div>
 
-    <!-- Modal de Registro/Login -->
+    <!-- ========================================
+         MODAL DE AUTENTICACIÓN (LOGIN/REGISTRO)
+         ======================================== -->
     <div class="auth-modal" id="auth-modal">
         <div class="auth-content">
+            <!-- Header del modal -->
             <div class="auth-header">
                 <h3 id="auth-title">Iniciar Sesión</h3>
                 <button class="close-auth" id="close-auth">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
+            <!-- Tabs para cambiar entre login y registro -->
             <div class="auth-tabs">
                 <button class="auth-tab active" data-tab="login">Iniciar Sesión</button>
                 <button class="auth-tab" data-tab="register">Registrarse</button>
@@ -247,13 +292,17 @@
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- ========================================
+         FOOTER - INFORMACIÓN DE CONTACTO
+         ======================================== -->
     <footer class="footer" id="contacto">
         <div class="container">
             <div class="footer-content">
+                <!-- Información de la empresa -->
                 <div class="footer-section">
                     <h3>Happy Paws</h3>
                     <p>Tu tienda de confianza para todo lo que tu mascota necesita.</p>
+                    <!-- Enlaces a redes sociales -->
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
@@ -261,6 +310,8 @@
                         <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
+                
+                <!-- Enlaces rápidos -->
                 <div class="footer-section">
                     <h4>Enlaces Rápidos</h4>
                     <ul>
@@ -270,6 +321,8 @@
                         <li><a href="#contacto">Contacto</a></li>
                     </ul>
                 </div>
+                
+                <!-- Información de contacto -->
                 <div class="footer-section">
                     <h4>Contacto</h4>
                     <div class="contact-info">
@@ -278,6 +331,8 @@
                         <p><i class="fas fa-map-marker-alt"></i> Calle Principal 123, Ciudad</p>
                     </div>
                 </div>
+                
+                <!-- Equipo de desarrollo -->
                 <div class="footer-section">
                     <h4>Equipo de Desarrollo</h4>
                     <div class="team-info">
@@ -292,6 +347,8 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Horarios de atención -->
                 <div class="footer-section">
                     <h4>Horarios</h4>
                     <div class="hours">
@@ -301,6 +358,8 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Footer inferior con copyright y enlaces legales -->
             <div class="footer-bottom">
                 <p>&copy; 2025 Happy Paws. Todos los derechos reservados.</p>
                 <div class="footer-links">
@@ -312,6 +371,9 @@
         </div>
     </footer>
 
+    <!-- ========================================
+         SCRIPT PRINCIPAL
+         ======================================== -->
     <script src="script.js"></script>
 </body>
 </html> 

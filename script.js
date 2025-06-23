@@ -1,4 +1,39 @@
-// Datos de productos
+/**
+ * ========================================
+ * HAPPY PAWS - CATÁLOGO VIRTUAL
+ * ========================================
+ * 
+ * Archivo JavaScript principal para la tienda virtual Happy Paws
+ * Desarrollado por estudiantes de Ingeniería de Software
+ * Politécnico Grancolombiano
+ * 
+ * Funcionalidades implementadas:
+ * - Sistema de autenticación (login/registro)
+ * - Catálogo de productos con 22+ artículos
+ * - Búsqueda básica y avanzada
+ * - Filtrado por categorías
+ * - Carrito de compras funcional
+ * - Modal de detalles de productos
+ * - Persistencia de datos en localStorage
+ * - Diseño responsive y animaciones
+ * 
+ * Equipo de desarrollo:
+ * - JEISSON FERNEY CARDENAS ORJUELA
+ * - JONATHAN PERDOMO ROZO
+ * - CARLOS ALFONSO PÉREZ GARZÓN
+ * - JOSÉ RODRÍGUEZ CORTÉS
+ * - CARLOS IVAN SANCHEZ GIRALDO
+ * ========================================
+ */
+
+/**
+ * ========================================
+ * BASE DE DATOS DE PRODUCTOS
+ * ========================================
+ * Array que contiene todos los productos del catálogo
+ * Cada producto incluye: id, nombre, precio, imagen, categoría,
+ * descripción, stock, marca, características específicas
+ */
 const products = [
     {
         id: 1,
@@ -288,90 +323,120 @@ const products = [
     }
 ];
 
-// Estado del carrito
+/**
+ * ========================================
+ * VARIABLES DE ESTADO GLOBAL
+ * ========================================
+ */
+
+// Estado del carrito de compras
 let cart = [];
 
-// Estado de autenticación
+// Estado de autenticación del usuario
 let currentUser = null;
 
-// Elementos del DOM
-const productsGrid = document.getElementById('products-grid');
-const cartModal = document.getElementById('cart-modal');
-const cartItems = document.getElementById('cart-items');
-const cartCount = document.getElementById('cart-count');
-const cartTotal = document.getElementById('cart-total');
-const cartIcon = document.getElementById('cart-icon');
-const closeCart = document.getElementById('close-cart');
-const checkoutBtn = document.getElementById('checkout-btn');
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
+/**
+ * ========================================
+ * ELEMENTOS DEL DOM - NAVEGACIÓN Y CARRITO
+ * ========================================
+ */
+const productsGrid = document.getElementById('products-grid');      // Grid de productos
+const cartModal = document.getElementById('cart-modal');            // Modal del carrito
+const cartItems = document.getElementById('cart-items');            // Lista de items del carrito
+const cartCount = document.getElementById('cart-count');            // Contador del carrito
+const cartTotal = document.getElementById('cart-total');            // Total del carrito
+const cartIcon = document.getElementById('cart-icon');              // Icono del carrito
+const closeCart = document.getElementById('close-cart');            // Botón cerrar carrito
+const checkoutBtn = document.getElementById('checkout-btn');        // Botón finalizar compra
+const hamburger = document.querySelector('.hamburger');            // Menú hamburguesa
+const navMenu = document.querySelector('.nav-menu');               // Menú de navegación
 
-// Elementos de autenticación
-const authModal = document.getElementById('auth-modal');
-const loginBtn = document.getElementById('login-btn');
-const closeAuth = document.getElementById('close-auth');
-const authTabs = document.querySelectorAll('.auth-tab');
-const loginForm = document.getElementById('login-form');
-const registerForm = document.getElementById('register-form');
-const userName = document.getElementById('user-name');
+/**
+ * ========================================
+ * ELEMENTOS DEL DOM - AUTENTICACIÓN
+ * ========================================
+ */
+const authModal = document.getElementById('auth-modal');            // Modal de autenticación
+const loginBtn = document.getElementById('login-btn');              // Botón de login
+const closeAuth = document.getElementById('close-auth');            // Botón cerrar auth
+const authTabs = document.querySelectorAll('.auth-tab');           // Tabs de auth
+const loginForm = document.getElementById('login-form');            // Formulario de login
+const registerForm = document.getElementById('register-form');      // Formulario de registro
+const userName = document.getElementById('user-name');              // Nombre del usuario
 
-// Elementos de búsqueda
-const searchInput = document.getElementById('search-input');
-const searchBtn = document.getElementById('search-btn');
-const categoryFilter = document.getElementById('category-filter');
-const priceMin = document.getElementById('price-min');
-const priceMax = document.getElementById('price-max');
-const stockFilter = document.getElementById('stock-filter');
-const advancedSearchBtn = document.getElementById('advanced-search-btn');
-const clearFiltersBtn = document.getElementById('clear-filters-btn');
+/**
+ * ========================================
+ * ELEMENTOS DEL DOM - BÚSQUEDA
+ * ========================================
+ */
+const searchInput = document.getElementById('search-input');        // Input de búsqueda básica
+const searchBtn = document.getElementById('search-btn');            // Botón de búsqueda
+const categoryFilter = document.getElementById('category-filter');  // Filtro de categoría
+const priceMin = document.getElementById('price-min');              // Precio mínimo
+const priceMax = document.getElementById('price-max');              // Precio máximo
+const stockFilter = document.getElementById('stock-filter');        // Filtro de stock
+const advancedSearchBtn = document.getElementById('advanced-search-btn'); // Búsqueda avanzada
+const clearFiltersBtn = document.getElementById('clear-filters-btn');     // Limpiar filtros
 
-// Inicialización
+/**
+ * ========================================
+ * INICIALIZACIÓN DE LA APLICACIÓN
+ * ========================================
+ * Función principal que se ejecuta cuando el DOM está listo
+ * Configura todos los event listeners y carga datos iniciales
+ */
 document.addEventListener('DOMContentLoaded', function() {
-    loadProducts();
-    setupEventListeners();
-    loadCartFromStorage();
-    loadUserFromStorage();
-    initializeTestUsers();
-    updateCartDisplay();
-    initializeActiveCategory();
-    updateUserDisplay();
+    loadProducts();                      // Cargar productos en el grid
+    setupEventListeners();               // Configurar event listeners
+    loadCartFromStorage();               // Cargar carrito desde localStorage
+    loadUserFromStorage();               // Cargar usuario desde localStorage
+    initializeTestUsers();               // Crear usuarios de prueba
+    updateCartDisplay();                 // Actualizar display del carrito
+    initializeActiveCategory();          // Marcar categoría "Todos" como activa
+    updateUserDisplay();                 // Actualizar display del usuario
 });
 
-// Configurar event listeners
+/**
+ * ========================================
+ * CONFIGURACIÓN DE EVENT LISTENERS
+ * ========================================
+ * Configura todos los event listeners necesarios para la funcionalidad
+ * de la aplicación: carrito, autenticación, búsqueda, navegación
+ */
 function setupEventListeners() {
-    // Carrito
-    cartIcon.addEventListener('click', toggleCart);
-    closeCart.addEventListener('click', toggleCart);
-    checkoutBtn.addEventListener('click', checkout);
+    // ===== EVENT LISTENERS DEL CARRITO =====
+    cartIcon.addEventListener('click', toggleCart);           // Abrir/cerrar carrito
+    closeCart.addEventListener('click', toggleCart);          // Cerrar carrito
+    checkoutBtn.addEventListener('click', checkout);          // Finalizar compra
     
-    // Autenticación
-    loginBtn.addEventListener('click', toggleAuth);
-    closeAuth.addEventListener('click', toggleAuth);
+    // ===== EVENT LISTENERS DE AUTENTICACIÓN =====
+    loginBtn.addEventListener('click', toggleAuth);           // Abrir modal de auth
+    closeAuth.addEventListener('click', toggleAuth);          // Cerrar modal de auth
     authTabs.forEach(tab => {
-        tab.addEventListener('click', switchAuthTab);
+        tab.addEventListener('click', switchAuthTab);         // Cambiar entre login/registro
     });
-    loginForm.addEventListener('submit', handleLogin);
-    registerForm.addEventListener('submit', handleRegister);
+    loginForm.addEventListener('submit', handleLogin);        // Manejar login
+    registerForm.addEventListener('submit', handleRegister);  // Manejar registro
     
-    // Búsqueda
-    searchBtn.addEventListener('click', performBasicSearch);
-    searchInput.addEventListener('keypress', function(e) {
+    // ===== EVENT LISTENERS DE BÚSQUEDA =====
+    searchBtn.addEventListener('click', performBasicSearch);  // Búsqueda básica
+    searchInput.addEventListener('keypress', function(e) {    // Búsqueda con Enter
         if (e.key === 'Enter') {
             performBasicSearch();
         }
     });
-    advancedSearchBtn.addEventListener('click', performAdvancedSearch);
-    clearFiltersBtn.addEventListener('click', clearFilters);
+    advancedSearchBtn.addEventListener('click', performAdvancedSearch); // Búsqueda avanzada
+    clearFiltersBtn.addEventListener('click', clearFilters);  // Limpiar filtros
     
-    // Navegación móvil
-    hamburger.addEventListener('click', toggleMobileMenu);
+    // ===== EVENT LISTENERS DE NAVEGACIÓN =====
+    hamburger.addEventListener('click', toggleMobileMenu);    // Menú móvil
     
-    // Filtrado por categorías
+    // ===== EVENT LISTENERS DE CATEGORÍAS =====
     const categoryCards = document.querySelectorAll('.category-card');
     categoryCards.forEach(card => {
         card.addEventListener('click', function() {
             const category = this.getAttribute('data-category');
-            filterProducts(category);
+            filterProducts(category);                         // Filtrar por categoría
             
             // Actualizar estado activo de las categorías
             categoryCards.forEach(c => c.classList.remove('active'));
@@ -388,17 +453,19 @@ function setupEventListeners() {
         });
     });
     
-    // Cerrar modales al hacer clic fuera
+    // ===== EVENT LISTENERS PARA CERRAR MODALES =====
     document.addEventListener('click', function(e) {
+        // Cerrar carrito al hacer clic fuera
         if (!cartModal.contains(e.target) && !cartIcon.contains(e.target)) {
             cartModal.classList.remove('active');
         }
+        // Cerrar modal de auth al hacer clic fuera
         if (!authModal.contains(e.target) && !loginBtn.contains(e.target)) {
             authModal.classList.remove('active');
         }
     });
     
-    // Smooth scrolling para enlaces de navegación
+    // ===== SMOOTH SCROLLING PARA NAVEGACIÓN =====
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
