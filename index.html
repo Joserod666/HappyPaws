@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Paws - Tu tienda de confianza para mascotas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header y Navegación -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-paw"></i>
+                    <span>Happy Paws</span>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#inicio" class="nav-link">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#productos" class="nav-link">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contacto" class="nav-link">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" id="login-btn">
+                            <i class="fas fa-user"></i>
+                            <span id="user-name">Iniciar Sesión</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#carrito" class="nav-link cart-icon" id="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Banner Principal -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1 class="hero-title">Todo para tu mascota</h1>
+            <p class="hero-subtitle">Encuentra los mejores productos para perros, gatos, aves y más</p>
+            <div class="hero-buttons">
+                <a href="#productos" class="btn btn-primary">Ver Productos</a>
+                <a href="#ofertas" class="btn btn-secondary">Ofertas Especiales</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-pets">
+                <div class="pet pet-1">🐕</div>
+                <div class="pet pet-2">🐱</div>
+                <div class="pet pet-3">🦜</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Búsqueda -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-container">
+                <!-- Búsqueda Básica -->
+                <div class="search-basic">
+                    <h3>Buscar Productos</h3>
+                    <div class="search-input-group">
+                        <input type="text" id="search-input" placeholder="Buscar por nombre de producto...">
+                        <button id="search-btn" class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Búsqueda Avanzada -->
+                <div class="search-advanced">
+                    <h3>Búsqueda Avanzada</h3>
+                    <div class="advanced-filters">
+                        <div class="filter-group">
+                            <label for="category-filter">Categoría:</label>
+                            <select id="category-filter">
+                                <option value="">Todas las categorías</option>
+                                <option value="Alimentación">Alimentación</option>
+                                <option value="Juguetes">Juguetes</option>
+                                <option value="Ropa">Ropa</option>
+                                <option value="Accesorios">Accesorios</option>
+                                <option value="Higiene">Higiene</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="price-min">Precio mínimo:</label>
+                            <input type="number" id="price-min" placeholder="0">
+                        </div>
+                        <div class="filter-group">
+                            <label for="price-max">Precio máximo:</label>
+                            <input type="number" id="price-max" placeholder="500000">
+                        </div>
+                        <div class="filter-group">
+                            <label for="stock-filter">Stock:</label>
+                            <select id="stock-filter">
+                                <option value="">Cualquier stock</option>
+                                <option value="available">En stock</option>
+                                <option value="low">Stock bajo</option>
+                            </select>
+                        </div>
+                        <button id="advanced-search-btn" class="btn btn-secondary">
+                            <i class="fas fa-filter"></i> Filtrar
+                        </button>
+                        <button id="clear-filters-btn" class="btn btn-outline">
+                            <i class="fas fa-times"></i> Limpiar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categorías -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Nuestras Categorías</h2>
+            <div class="categories-grid">
+                <div class="category-card" data-category="all">
+                    <i class="fas fa-th-large"></i>
+                    <h3>Todos</h3>
+                    <p>Ver todos los productos</p>
+                </div>
+                <div class="category-card" data-category="Alimentación">
+                    <i class="fas fa-bone"></i>
+                    <h3>Alimentación</h3>
+                    <p>Comida premium para todas las edades</p>
+                </div>
+                <div class="category-card" data-category="Juguetes">
+                    <i class="fas fa-toy"></i>
+                    <h3>Juguetes</h3>
+                    <p>Entretenimiento y diversión</p>
+                </div>
+                <div class="category-card" data-category="Ropa">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>Ropa</h3>
+                    <p>Estilo y comodidad</p>
+                </div>
+                <div class="category-card" data-category="Accesorios">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Accesorios</h3>
+                    <p>Todo lo que necesitas</p>
+                </div>
+                <div class="category-card" data-category="Higiene">
+                    <i class="fas fa-soap"></i>
+                    <h3>Higiene</h3>
+                    <p>Productos de cuidado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos Destacados -->
+    <section class="products" id="productos">
+        <div class="container">
+            <h2 class="section-title">Productos Destacados</h2>
+            <div class="products-grid" id="products-grid">
+                <!-- Los productos se cargarán dinámicamente con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Carrito Modal -->
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Tu Carrito</h3>
+                <button class="close-cart" id="close-cart">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="cart-items" id="cart-items">
+                <!-- Los items del carrito se cargarán dinámicamente -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+                <button class="btn btn-primary" id="checkout-btn">Finalizar Compra</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Registro/Login -->
+    <div class="auth-modal" id="auth-modal">
+        <div class="auth-content">
+            <div class="auth-header">
+                <h3 id="auth-title">Iniciar Sesión</h3>
+                <button class="close-auth" id="close-auth">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Iniciar Sesión</button>
+                <button class="auth-tab" data-tab="register">Registrarse</button>
+            </div>
+            
+            <!-- Formulario de Login -->
+            <form id="login-form" class="auth-form active">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Contraseña</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+            </form>
+            
+            <!-- Formulario de Registro -->
+            <form id="register-form" class="auth-form">
+                <div class="form-group">
+                    <label for="register-name">Nombre Completo</label>
+                    <input type="text" id="register-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Contraseña</label>
+                    <input type="password" id="register-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm">Confirmar Contraseña</label>
+                    <input type="password" id="register-confirm" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Registrarse</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Happy Paws</h3>
+                    <p>Tu tienda de confianza para todo lo que tu mascota necesita.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#productos">Productos</a></li>
+                        <li><a href="#ofertas">Ofertas</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+                        <p><i class="fas fa-envelope"></i> info@happypaws.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Calle Principal 123, Ciudad</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Equipo de Desarrollo</h4>
+                    <div class="team-info">
+                        <p class="team-title">Estudiantes Ingeniería de Software</p>
+                        <p class="team-subtitle">Politécnico Grancolombiano</p>
+                        <div class="team-members">
+                            <p><i class="fas fa-user-graduate"></i> JEISSON FERNEY CARDENAS ORJUELA</p>
+                            <p><i class="fas fa-user-graduate"></i> JONATHAN PERDOMO ROZO</p>
+                            <p><i class="fas fa-user-graduate"></i> CARLOS ALFONSO PÉREZ GARZÓN</p>
+                            <p><i class="fas fa-user-graduate"></i> JOSÉ RODRÍGUEZ CORTÉS</p>
+                            <p><i class="fas fa-user-graduate"></i> CARLOS IVAN SANCHEZ GIRALDO</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Horarios</h4>
+                    <div class="hours">
+                        <p>Lunes - Viernes: 9:00 - 20:00</p>
+                        <p>Sábado: 9:00 - 18:00</p>
+                        <p>Domingo: 10:00 - 16:00</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Happy Paws. Todos los derechos reservados.</p>
+                <div class="footer-links">
+                    <a href="#">Política de Privacidad</a>
+                    <a href="#">Términos y Condiciones</a>
+                    <a href="#">Aviso Legal</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
